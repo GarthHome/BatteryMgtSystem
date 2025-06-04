@@ -1,0 +1,1 @@
+ADS1115 tempC operation range:   -40 to 125
