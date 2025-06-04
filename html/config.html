@@ -1,0 +1,201 @@
+<!--This is a comment. 
+0, #channel                #channel_id       <input type="number">
+"4.2V CIRCUIT CHANNEL(0)", #channel_description
+1,                         # "version_id"   <input type="number">
+"BASELINE VERSION",         #version desc   <input type="text"> 
+25.4,                       #tempC          <input type="number">
+1746656778,                 #time seconds  <input type="datetime-local">
+1,                          #mosfet_id     <input type="number">
+"P-CHANNEL",                #mosfet_type   <input type="text"> 
+25.4,                       #tempC          <input type="number">
+330,                        #r1            <input type="number">
+1000,                       #r2            <input type="number">
+10000,                      #rp            <input type="number">
+220,                        #rg            <input type="number">
+0,                          # is_calibrated <input type="number">
+# folowing is LUT Table:
+" { "2.342736": 3.2, "2.415946": 3.3, "2.489157": 3.4, "2.562367": 3.5, "2.635578": 3.6, "2.708788": 3.7, "2.781999": 3.8, "2.855209": 3.9,     "2.92842": 4.0, "3.00163": 4.1 }"
+timestamps_per_channel     #list of readable timestamps
+-->
+
+<head>
+  <script src="jquery.js"></script>
+  <script>
+    $(function () {
+      $("#includedlut0").load("lut0.html");
+      $("#includedlut1").load("lut1.html");
+      $("#includedlut2").load("lut2.html");
+
+    });
+  </script>
+  Run-Time Configuration by Channel
+</head>
+<style>
+  .container {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "menu content"
+      "footer footer";
+    grid-template-columns: 1fr 3fr;
+    gap: 5px;
+    background-color: #2196F3;
+    padding: 5px;
+  }
+
+  .container>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+  }
+
+  .container>div.header {
+    grid-area: header;
+    text-align: center;
+  }
+
+  .container>div.menu {
+    grid-area: menu;
+  }
+
+  .container>div.content {
+    grid-area: content;
+  }
+
+  .container>div.footer {
+    grid-area: footer;
+  }
+
+  .container>div.row {
+    display: grid;
+    box-sizing: 500px;
+    gap: 1em;
+    padding: 10px;
+
+  }
+
+  .container>div.lut {
+    box-sizing: 100%;
+    grid-template-columns: 10;
+    column-width: 30px;
+    grid-row-start: 1;
+    grid-row-end: 5;
+  }
+</style>
+
+<body>
+  <form>
+    <div class="container">
+      <div class="header">
+        <h2>Run-Time Configuration By Channel</h2>
+      </div>
+      <div class="menu">
+        <a href=file:///Users/garth/Programming/MicroPython/usb/ryan/voltage_divider/html/lut0.html>4.2V Circuit 0
+        </a><br><a href="file:///Users/garth/Programming/MicroPython/usb/ryan/voltage_divider/html/lut1.html">8.4V
+          Circuit 1</a> <br>
+        <a href="file:///Users/garth/Programming/MicroPython/usb/ryan/voltage_divider/html/lut2.html">12.6V Circuit
+          2</a>
+      </div>
+      <div class="content">
+        <div class="grid">
+          <section>
+            <h1 id="c0">Channel 0</h1>
+            <div class="row">
+              <label for="Channel_id">Channel_id:</label>
+              <input type="number" id="Channel_id" value=0 readonly name="channel_id">
+              <label for="Channel_desc">Description:</label>
+              <input type="text" id="Channel_desc" value='4.2 V Circuit' name="Channel_desc">
+              <label for="TimeStamp">Created:</label>
+              <input type="datetime-local" id="Timestamp" name="TimeStamp">
+              <label for="Version_id">Version_id</label>
+              <input type="number" id="Version_id" name="Version_id">
+              <label for="Version_desc">Reason:</label>
+              <input type="text" id="Version_desc" name="Version_desc">
+            </div>
+
+            <div class="row">
+              <label for="R1">R1</label>
+              <input type="number" id="R1" name="R1">
+              <label for="R2">R2</label>
+              <input type="number" id="R2" name="R2">
+              <label for="Rp">Rp</label>
+              <input type="number" id="Rp" name="Rp">
+              <label for="Rg">Rg</label>
+              <input type="number" id="Rg" name="Rg">
+              <label for="LUT_Calibrated">LUT Calibrated</label>
+              <input type="radio" id="LUT_Calibrated" name="LUT_Calibrated">
+            </div>
+            <div>Lookup Table:
+              <a href=file:///Users/garth/Programming/MicroPython/usb/ryan/voltage_divider/html/lut0.html>4.2V
+                Circuit</a><br><a </section>
+
+                <h1 id="c1">Channel 1</h1>
+                <div class "row">
+                  <label for="Channel_id">Channel_id:</label>
+                  <input type="number" id="Channel_id" value=1 readonly name="channel_id">
+                  <label for="Channel_desc">Description:</label>
+                  <input type="text" id="Channel_desc" value='8.4 V Circuit' readonly name="Channel_desc">
+                  <label for="TimeStamp">Created:</label>
+                  <input type="datetime-local" id="Timestamp" name="TimeStamp">
+                  <label for="Version_id">Version_id</label>
+                  <input type="number" id="Version_id" name="Version_id">
+                  <label for="Version_desc">Reason:</label>
+                  <input type="text" id="Version_desc" name="Version_desc">
+                </div>
+
+                <div class "row">
+                  <label for="R1">R1</label>
+                  <input type="number" id="R1" name="R1">
+                  <label for="R2">R2</label>
+                  <input type="number" id="R2" name="R2">
+                  <label for="Rp">Rp</label>
+                  <input type="number" id="Rp" name="Rp">
+                  <label for="Rg">Rg</label>
+                  <input type="number" id="Rg" name="Rg">
+                  <label for="LUT_Calibrated">LUT Calibrated</label>
+                  <input type="radio" id="LUT_Calibrated" name="LUT_Calibrated">
+                </div>
+                <div>Lookup Table:
+                  <a href="file:///Users/garth/Programming/MicroPython/usb/ryan/voltage_divider/html/lut1.html">8.4V
+                    Circuit</a>
+                </div>
+          </section>
+          <section>
+            <h1 id="c2">Channel 2</h1>
+            <div class "row">
+              <label for="Channel_id">Channel_id:</label>
+              <input type="number" id="Channel_id" value=2 readonly name="channel_id">
+              <label for="Channel_desc">Description:</label>
+              <input type="text" id="Channel_desc" value='12.6 V Circuit' name="Channel_desc">
+              <label for="TimeStamp">Created:</label>
+              <input type="datetime-local" id="Timestamp" name="TimeStamp">
+              <label for="Version_id">Version_id</label>
+              <input type="number" id="Version_id" name="Version_id">
+              <label for="Version_desc">Reason:</label>
+              <input type="text" id="Version_desc" name="Version_desc">
+            </div>
+
+            <div class "row">
+              <label for="R1">R1</label>
+              <input type="number" id="R1" name="R1">
+              <label for="R2">R2</label>
+              <input type="number" id="R2" name="R2">
+              <label for="Rp">Rp</label>
+              <input type="number" id="Rp" name="Rp">
+              <label for="Rg">Rg</label>
+              <input type="number" id="Rg" name="Rg">
+              <label for="LUT_Calibrated">LUT Calibrated</label>
+              <input type="radio" id="LUT_Calibrated" name="LUT_Calibrated">
+            </div>
+            <div>Lookup Table:
+              <a href="file:///Users/garth/Programming/MicroPython/usb/ryan/voltage_divider/html/lut2.html">12.6V
+                Circuit</a>
+            </div>
+          </section>
+
+          <div class="footer">
+            <h4>View or Modify a Circuit as needed...</h4>
+          </div>
+        </div>
+  </form>
+
+</body>

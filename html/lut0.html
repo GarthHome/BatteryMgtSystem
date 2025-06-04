@@ -1,0 +1,143 @@
+<html>
+
+<header>
+
+</header>
+<style>
+  .vm {
+    background-color: lightblue;
+    text-align: "center";
+    border: 10px;
+    width: 90%
+  }
+
+  .vb {
+    background-color: lightgreen;
+    border: 10px;
+    text-align: "center";
+    width: 90%
+  }
+
+  /* removes the arrows in all number inputs ...*/
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+  //first add event listener for lage load
+  document.addEventListener("DOMContentLoaded", get_json_data, false);
+  //this function is in the event listener and will execute on page load
+  function get_json_data() {
+    // Relative URL of external json file
+    var json_url = 'lut42.json';
+
+    //Build the XMLHttpRequest (aka AJAX Request)
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+
+        var data = JSON.parse(this.responseText); // convert the response to a json object
+        append_json(data);// pass the json object to the append_json function
+      }
+    }
+    //set the request destination and type
+    xmlhttp.open("POST", json_url, true);
+    //set required headers for the request
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // send the request
+    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+  }
+
+  function get_json_data(data) {
+
+    var table = document.getElementById('lut0');
+
+    append_json(data)
+
+    //this function appends the json data to the table 'lut0'
+    function append_json(data) {
+      var table = document.getElementById('lut0');
+      print("Table: ", table);
+      print("Data: ", data);
+      data.forEach(function (object) {
+        var tr = document.createElement('tr');
+        <!--     tr.innerHTML = '<td>' + object.COUNTRY + '</td>' +
+              '<td>' + object.LoC + '</td>' +
+              '<td>' + object.BALANCE + '</td>' +
+              '<td>' + object.DATE + '</td>'; -->
+        table.appendChild(tr);
+      });
+    }
+</script>
+
+<body>
+
+  <h3>Lookup Table 0: 4.2V Circuit</h3>
+
+  <table>
+    <tbody>
+      <tr>
+        <th>Vm</th>
+        <th>Vb</th>
+      <tr id="lut0">
+        <td><input type="number" class="vm" id="vm00"> </td>
+        <td><input type="number" class="vb" id="vb00"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm01"> </td>
+        <td><input type="number" class="vb" id="vb01"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm02"> </td>
+        <td><input type="number" class="vb" id="vb02"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm03"> </td>
+        <td><input type="number" class="vb" id="vb03"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm04"> </td>
+        <td><input type="number" class="vb" id="vb04"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm05"> </td>
+        <td><input type="number" class="vb" id="vb05"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm06"> </td>
+        <td><input type="number" class="vb" id="vb06"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm07"> </td>
+        <td><input type="number" class="vb" id="vb07"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm08"> </td>
+        <td><input type="number" class="vb" id="vb08"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm09"> </td>
+        <td><input type="number" class="vb" id="vb09"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm010"> </td>
+        <td><input type="number" class="vb" id="vb010"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm011"> </td>
+        <td><input type="number" class="vb" id="vb011"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm012"> </td>
+        <td><input type="number" class="vb" id="vb012"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm013"> </td>
+        <td><input type="number" class="vb" id="vb013"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm014"> </td>
+        <td><input type="number" class="vb" id="vb014"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm015"> </td>
+        <td><input type="number" class="vb" id="vb015"> </td>
+      <tr>
+        <td><input type="number" class="vm" id="vm016"> </td>
+        <td><input type="number" class="vb" id="vb016"> </td>
+
+    </tbody>
+  </table>
+
+</body>
+
+</html>
